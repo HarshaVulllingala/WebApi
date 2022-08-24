@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebApplMVC5.Models.User>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var currentPageNumber = 1;
+        loadData(currentPageNumber);
+        debugger
+        $(window).scroll(function () {
+            //debugger
+            console.log($(window).scrollTop());
+            console.log($(document).height() - $(window).height());
+            
+            console.log($(window).scrollTop() == $(document).height() - $(window).height());
+            if ($(window).scrollTop() <= $(document).height() - $(window).height()) {
+                currentPageNumber += 1;
+                loadData(currentPageNumber);
+            }
+
+        });
+
+        function loadData(currentPage) {
+            debugger
+            $.ajax({
+                url: 'https://localhost:44329/Home/Lazyloading',
+                method: 'Post',                
+                dataType: 'json',
+                data: { pageNumber: currentPage, pageSize: 20},
+                success: function (data) { debugger
+                    var userTable = $('#userTable tbody');
+                    $(data).each(function (index, user) {
+                        userTable.append('<tr><td>' + user.id + '</td><td>' + user.name + '</td><td>' + user.city + '</td><td>' + user.contact + '</td></tr>');
+                    })
+                }
+
+            });
+        }
+
+    });
+</script>
+
+
+<table id="userTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <div id="userDiv">
+
+    </div>
+
+
+</table>

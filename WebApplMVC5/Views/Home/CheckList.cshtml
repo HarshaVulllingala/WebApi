@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApplMVC5.Models.User>
+<div class="row justify-content-md-center">
+    @{
+        ViewBag.Title = "CheckList";
+    }
+</div>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Scripts/bootstrap.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap-grid.css" rel="stylesheet" />
+<link href="~/Scripts/CustomStyle.css" rel="stylesheet" />
+
+<div class="row justify-content-md-center">
+    <h2>CheckList</h2>
+</div>
+
+<div class="row justify-content-md-center">
+    @Html.ActionLink("Create New", "Create")
+</div>
+<br />
+@using (Html.BeginForm("DeleteUser", "Home", FormMethod.Post))
+{
+    <div class="container">
+
+        <div class="row">
+            <div class="col col-lg-2; customHeadDiv">              
+                    Select                
+            </div>
+            <div class="col col-lg-2; customHeadDiv">
+                
+                    @Html.DisplayNameFor(model => model.name)
+               
+            </div>
+            <div class="col col-lg-2; customHeadDiv">
+
+               
+                    @Html.DisplayNameFor(model => model.city)
+                
+
+            </div>
+            <div class="col col-lg-2; customHeadDiv">
+                
+                    @Html.DisplayNameFor(model => model.contact)
+               
+            </div>
+
+        </div>
+
+        @Html.EditorForModel()
+
+
+        <br />
+        <div class="row justify-content-md-center">
+            <input type="submit" value="Delete Selected users" />
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+

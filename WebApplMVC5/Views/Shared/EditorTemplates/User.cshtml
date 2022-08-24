@@ -1,0 +1,25 @@
+﻿@model WebApplMVC5.Models.User
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Scripts/bootstrap.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap-grid.css" rel="stylesheet" />
+<link href="~/Scripts/CustomStyle.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col col-lg-2; customBodyDiv">        
+            <input type="checkbox" name="userIdtoDelete" id="userIdtoDelete" value="@Model.id" />       
+    </div>
+
+    <div class="col col-lg-2; customBodyDiv">     
+            @Model.name       
+    </div>
+
+    <div class="col col-lg-2; customBodyDiv">        
+            @Model.city       
+    </div>
+
+    <div class="col col-lg-2; customBodyDiv">        
+            @Model.contact        
+    </div>
+</div>
+

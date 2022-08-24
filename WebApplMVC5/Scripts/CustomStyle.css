@@ -1,0 +1,11 @@
+﻿.customHeadDiv{
+       
+    background-color:lightblue;
+    text-align: left;
+    font-size:x-large;      
+}
+.customBodyDiv {
+    background-color: aquamarine;
+    text-align: left;
+    font-size: medium;
+}

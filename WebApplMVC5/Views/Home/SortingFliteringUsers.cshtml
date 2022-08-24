@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplMVC5.Models.User>
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "SortingFliteringUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Scripts/bootstrap.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap-grid.css" rel="stylesheet" />
+<link href="~/Scripts/CustomStyle.css" rel="stylesheet" />
+
+@section css {
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="row justify-content-md-center">
+    @Html.ActionLink("CheckListPage", "CheckList")
+</div>
+
+<div>
+    @Html.Grid(Model).Named("Users Grid").Columns(c =>
+{
+    c.Add(x => x.id).Css("customBodyDiv").Titled("ID").Css("customHeadDiv").Filterable(true).Sortable(true);
+    c.Add(x => x.name).Css("customBodyDiv").Titled("Name").Css("customHeadDiv").Filterable(true).Sortable(true);
+    c.Add(x => x.city).Css("customBodyDiv").Titled("City").Css("customHeadDiv").Filterable(true).Sortable(true);
+    c.Add(x => x.contact).Css("customBodyDiv").Titled("Contact").Css("customHeadDiv").Filterable(true).Sortable(true);
+    c.Add().Encoded(false).Sanitized(false).SetWidth(30).RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { id = o.id })).Css("customBodyDiv");
+}).WithPaging(5).EmptyText("No User Data")
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"></script>
+}
+
+

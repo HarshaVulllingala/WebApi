@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "FileValidation";
+}
+
+<h2>FileValidation</h2>
+
+@using (Html.BeginForm("FileValidation", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div>
+    @Html.TextBox("file", "", new { type = "file" })  <br />
+    acceptable files upload <b>pdf, doc ,xml </b>and <b>ppt</b> files
+    <br />
+
+    <input type="submit" value="Upload" />
+    @ViewBag.Message
+</div>
+}
+
